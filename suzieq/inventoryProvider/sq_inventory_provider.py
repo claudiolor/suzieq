@@ -93,7 +93,7 @@ def inv_provider_main():
         
         if current_global_inventory_hash != old_global_inventory_hash:
             # give the global inventory to the pollerManager to retrieve the number of chunks
-            n_chunks = pollMng.estimate_pollers_number(global_inventory)
+            n_chunks = pollMng.get_pollers_number(global_inventory)
 
             # give the global inventory to the chunker and wait for chunks
             inventory_chunks : list = chunker.chunk(global_inventory,n_chunks)
