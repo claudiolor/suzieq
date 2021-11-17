@@ -6,5 +6,5 @@ class InventoryProvider:
         pass
 
     @abstractmethod
-    def run():
+    def run(inventory_chunks):
         pass
