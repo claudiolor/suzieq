@@ -12,14 +12,14 @@ class InventoryProvider:
         self._plugins_config = dict()
 
         # contains the Plugin objects divided by type
-        self._plugins = dict()
+        self._plugin_objects = dict()
 
     def load(self,config_data):
         self._provider_config = config_data["provider_config"]
         self._plugins_config = config_data["plugin_type"]
 
     def get_plugins(self,plugin_type):
-        return self._plugins[plugin_type]
+        return self._plugin_objects[plugin_type]
 
     def init_plugins(self,plugin_type):
         plugin_confs : list = self._plugins_config[plugin_type]
@@ -30,10 +30,10 @@ class InventoryProvider:
             # init the plugin using pc["args"]
             plugin.init(pc["args"])
             
-            self._plugins[plugin_type].append(plugin)
+            self._plugin_objects[plugin_type].append(plugin)
 
     def run_plugins(self,plugin_type):
-        plugins : list = self._plugins[plugin_type]
+        plugins : list = self._plugin_objects[plugin_type]
 
         # start in a new thread the "run" function for each plugin
         for p in plugins:
@@ -42,7 +42,7 @@ class InventoryProvider:
             ).start()
 
     def get_source_inventories(self):
-        plugins : list = self._plugins["source"]
+        plugins : list = self._plugin_objects["source"]
 
         inventories = []
 

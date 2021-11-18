@@ -1,23 +1,24 @@
-plugin_type:
-  source:
-  - netbox-Rome:
-    plugin_name: netbox
-    args: 
-      token: "0123456789abcdef0123456789abcdef01234567"
-      ip_address: "127.0.0.1"
-      protocol: "http"
-      port: "8000"
-  - netbox-LosAngeles:
-    plugin_name: netbox
-    args: 
-      token: "0123456789abcdef0123456789abcdef01234567"
-      ip_address: "127.0.0.1"
-      protocol: "http"
-      port: "8000"
-  pollerManager:
+inventory_provider:
+  plugin_type:
+    source:
+    - netbox-Rome:
+      plugin_name: netbox
+      args: 
+        token: "0123456789abcdef0123456789abcdef01234567"
+        ip_address: "127.0.0.1"
+        protocol: "http"
+        port: "8000"
+    - netbox-LosAngeles:
+      plugin_name: netbox
+      args: 
+        token: "0123456789abcdef0123456789abcdef01234567"
+        ip_address: "127.0.0.1"
+        protocol: "http"
+        port: "8000"
+    pollerManager:
+      ...
+    chunker:
+      ...
+  provider_config:
+    period: 60
     ...
-  chunker:
-    ...
-provider_config:
-  period: 60
-  ...
