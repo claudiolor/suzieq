@@ -1,24 +1,36 @@
 inventory_provider:
   plugin_type:
     source:
-    - netbox-Rome:
+    - local-netbox:
       plugin_name: netbox
-      args: 
-        token: "0123456789abcdef0123456789abcdef01234567"
+      args:
+        credentials:
+          token: "0123456789abcdef0123456789abcdef01234567"
         ip_address: "127.0.0.1"
-        protocol: "http"
+        use_https: false
         port: "8000"
-    - netbox-LosAngeles:
+        namespace: "local"
+        tag: "suzieq"
+        period: 3
+        devices_credentials:
+          file_path: "./local-netbox-devices-credentials.yaml"
+    - remote-netbox-demo:
       plugin_name: netbox
-      args: 
-        token: "0123456789abcdef0123456789abcdef01234567"
-        ip_address: "127.0.0.1"
-        protocol: "http"
-        port: "8000"
-    pollerManager:
-      ...
-    chunker:
-      ...
-  provider_config:
-    period: 60
-    ...
+      args:
+        credentials:
+          token: "05890d9066e2e89eeffee766f579832388547786"
+        ip_address: "demo.netbox.dev"
+        use_https: true
+        port: "443"
+        period: 5
+        tag: "test-tag"
+        devices_credentials:
+          file_path: "./remote-netbox-demo-devices-credentials.yaml"
+#   pollerManager:
+#     ...
+#   chunker:
+#     ...
+# provider_config:
+#   period: 60
+#   ...
+    

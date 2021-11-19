@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
 
-class InventoryProvider:
+class PollerManager:
     @abstractmethod
     def apply(inventory_chunks):
         '''
@@ -19,7 +19,3 @@ class InventoryProvider:
 
         inventory: the inventory to be splitted across the poller instances
         '''
-
-    @abstractmethod
-    def run(inventory_chunks):
-        pass
